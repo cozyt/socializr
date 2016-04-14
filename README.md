@@ -1,22 +1,36 @@
 # Socializr
 
-## Version 
+## Version
 
-0.1
+0.1.1
 
-## Dependencies
+## Installation
+
+Add the package to your `bower.json` file. As it's not yet registered on bower, you might want to add the full repository
+
+    ```json
+    {
+         "dependencies": {
+             ...
+             "socializr": "git@github.com:dimsemenov/PhotoSwipe.git#v0.1.1"
+         }
+    }
+    ```
 
 ## About
 
-Global var declaration for handling share features in a web app
+Collection of methods and properties for handling sharing in a web apps.
+
+Capable of loading and initializing required SDK's using javascript provided by the platform SDKs.
+
+Offers simple implementation by method call of sharing to various platforms.
 
 ## Usage
-
 
 ### Define the facebook application ID
 
 ```js
-Social.fbAppId = $('meta[property="fb:app_id"]').attr('content');
+Socializr.fbAppId = $('meta[property="fb:app_id"]').attr('content');
 ```
 
 ### Define the version of the facebook SDK
@@ -28,13 +42,13 @@ Socializr.fbVersion = '2.4';
 Facebook and Twitter are currently the only supported SDKs (more to come)
 
 ```js
-Social.loadSdk('facebook');
+Socializr.loadSdk('facebook');
 ```
 
 ### Initiate the share
 
 ```js
-Social.share('twitter', 'http://mycurrenturl.com', {
+Socializr.share('twitter', 'http://mycurrenturl.com', {
     twitter: {
         via      : 'twitter_handle',
         text     : 'I love this handy little method',
@@ -48,7 +62,7 @@ Social.share('twitter', 'http://mycurrenturl.com', {
 ```
 
 ```js
-Social.share('email', 'http://mycurrenturl.com', {
+Socializr.share('email', 'http://mycurrenturl.com', {
     email: {
         mailto   : 'noreply@socializr.com',
         body     : 'Thanks for making sharing so easy to implement',
