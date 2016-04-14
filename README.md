@@ -2,7 +2,7 @@
 
 ## Version
 
-0.1.1
+0.1.2
 
 ## Installation
 
@@ -12,7 +12,7 @@ Add the package to your `bower.json` file. As it's not yet registered on bower, 
     {
          "dependencies": {
              ...
-             "socializr": "git@github.com:dimsemenov/PhotoSwipe.git#v0.1.1"
+             "socializr": "git@github.com:cozyt/socializr.git#v0.1.2"
          }
     }
     ```
