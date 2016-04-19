@@ -2,7 +2,7 @@
 
 ## Version
 
-0.2
+0.2.0
 
 ## Installation
 
@@ -12,7 +12,7 @@ Add the package to your `bower.json` file. As it's not yet registered on bower, 
     {
          "dependencies": {
              ...
-             "socializr": "git@github.com:cozyt/socializr.git#v0.1.2"
+             "socializr": "git@github.com:cozyt/socializr.git#v0.2"
          }
     }
     ```
@@ -35,7 +35,9 @@ Socializr.fbAppId = $('meta[property="fb:app_id"]').attr('content');
 
 ### Define the version of the facebook SDK
 
+```js
 Socializr.fbVersion = '2.4';
+```
 
 ### Load an SDK
 
