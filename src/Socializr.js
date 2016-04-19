@@ -11,6 +11,8 @@ var Socializr = Socializr || {};
 
 Socializr.fbAppId   = Socializr.fbAppId || '';
 Socializr.fbVersion = Socializr.fbVersion || '2.4';
+Socializr.lang      = Socializr.lang || 'en_US';
+Socializr.xfbml     = Socializr.xfbml || 1;
 
 /******************************************************************************
  * Methods
@@ -28,7 +30,7 @@ Socializr.loadSdk = function(platform) {
                   var js, fjs = d.getElementsByTagName(s)[0];
                   if (d.getElementById(id)) return;
                   js = d.createElement(s); js.id = id;
-                  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v" + Socializr.fbVersion + "&appId=" + Socializr.fbAppId;
+                  js.src = "//connect.facebook.net/" + Socializr.lang + "/sdk.js#xfbml=" + Socializr.xfbml + "&version=v" + Socializr.fbVersion + "&appId=" + Socializr.fbAppId;
                   fjs.parentNode.insertBefore(js, fjs);
                 }(document, 'script', 'facebook-jssdk'));
             }
