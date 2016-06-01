@@ -9,10 +9,10 @@ var Socializr = Socializr || {};
  * Properties
  */
 
-Socializr.fbAppId   = Socializr.fbAppId || '';
-Socializr.fbVersion = Socializr.fbVersion || '2.4';
-Socializr.lang      = Socializr.lang || 'en_US';
-Socializr.xfbml     = Socializr.xfbml || 1;
+Socializr.fbAppId   = Socializr.fbAppId     || '';
+Socializr.fbVersion = Socializr.fbVersion   || '2.5';
+Socializr.lang      = Socializr.lang        || 'en_US';
+Socializr.xfbml     = Socializr.xfbml       || 1;
 
 /******************************************************************************
  * Methods
