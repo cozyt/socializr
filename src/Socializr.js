@@ -48,6 +48,9 @@ Socializr.loadSdk = function(platform) {
                     }
                 }(document, 'script', 'twitter-wjs');
             break;
+
+        case 'google-plus':
+            break;
     }
 
     return Socializr;
@@ -77,6 +80,7 @@ Socializr.share = function(platform, url, options) {
 
             break;
 
+        case 'google-plus':
         case 'twitter':
             var screenWidth    = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width,
                 screenHeight   = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height,
@@ -84,35 +88,41 @@ Socializr.share = function(platform, url, options) {
                 dualScreenTop  = window.screenTop != undefined ? window.screenTop : screen.top;
 
             var width     = screenWidth >= 650 ? 650 : screenWidth / 2,
-                height    = 253, // Hard coded, set by Twitter UI
+                height    = platform === 'twitter' ? 253 : 600, // Hard coded, set by Twitter UI
                 left      = ((screenWidth / 2) - (width / 2)) + dualScreenLeft,
                 top       = ((screenHeight / 2) - (height / 2)) + dualScreenTop,
-                winParams = 'status=1, scrollbars=yes, width=' + width + ', height=' + height + ', top=' + top + ', left=' + left,
+                winParams = 'status=1, menubar=no, toolbar=no, scrollbars=yes, top=' + top + ', left=' + left + ', width=' + width + ', height=' + height;
 
-            url = 'https://twitter.com/intent/tweet?url=' + url;
+            if (platform === 'twitter') {
+                url = 'https://twitter.com/intent/tweet?url=' + url;
 
-            if(typeof options.twitter !== 'undefined') {
-                if(typeof options.twitter.via !== 'undefined') {
-                    url += '&via=' + options.twitter.via;
+                if(typeof options.twitter !== 'undefined') {
+                    if(typeof options.twitter.via !== 'undefined') {
+                        url += '&via=' + options.twitter.via;
+                    }
+
+                    if(typeof options.twitter.text !== 'undefined') {
+                        url += '&text=' + options.twitter.text;
+                    }
+
+                    if(typeof options.twitter.hashtags !== 'undefined') {
+                        url += '&hashtags=' + options.twitter.hashtags;
+                    }
                 }
 
-                if(typeof options.twitter.text !== 'undefined') {
-                    url += '&text=' + options.twitter.text;
-                }
-
-                if(typeof options.twitter.hashtags !== 'undefined') {
-                    url += '&hashtags=' + options.twitter.hashtags;
-                }
+            } else if (platform === 'google-plus') {
+                url = 'https://plus.google.com/share?url=' + url;
+                url += '&h1=' + Socializr.lang.replace('_','-');
             }
 
-            var newWindow = window.open(url, 'twitter', winParams);
+            var newWindow = window.open(url, platform, winParams);
 
             if (window.focus) {
                 newWindow.focus();
             }
 
             if(typeof options.success === 'function') {
-                options.success('twitter');
+                options.success(platform);
             }
 
             break;
