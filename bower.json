@@ -1,6 +1,6 @@
 {
   "name": "socializr",
   "description": "Collection of methods and properties for handling sharing in a web apps.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "main": "Socializr.js"
 }
